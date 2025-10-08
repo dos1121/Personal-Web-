@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+    <h1>Get in Touch</h1>
+    <p>Connect with me through my social platforms or contact number below:</p>
+
+    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+        <a href="https://www.facebook.com/bert.palino/" target="_blank" class="contact-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="50">
+            <p>Facebook</p>
+        </a>
+
+        <a href="https://www.instagram.com/bertpalino/" target="_blank" class="contact-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="50">
+            <p>Instagram</p>
+        </a>
+
+        <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="50">
+            <p>Email</p>
+        </a>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;">
+        <h2 style="color: #FFFDD0;"> Contact Number</h2>
+        <p style="font-size: 1.2em; margin-top: 10px;">+63 991 066 8242</p>
+    </div>
+
+    <style>
+        .contact-link {
+            text-align: center;
+            text-decoration: none;
+            color: #e0e6ed;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+            color: #FFFDD0;
+        }
+
+        .contact-link img {
+            filter: brightness(0.8);
+            transition: filter 0.3s ease;
+        }
+
+        .contact-link:hover img {
+            filter: brightness(1);
+        }
+    </style>
+{% endblock %}
