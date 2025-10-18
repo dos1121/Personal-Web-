@@ -1,8 +1,102 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
+
 {% block content %}
-    <h1>Hi, It's Bert</h1>
-    <h2>I'm a <span style="color:#FFFDD0;">Computer Engineering Student</span></h2>
-    <p>Welcome to my portfolio! Explore my works, projects, and tools below.</p>
-    <button class="btn" onclick="location.href='/works'">See My Works</button>
+<section class="hero">
+    <h1 class="fade-in">Hi, I'm <span class="highlight">Bert</span></h1>
+    <h2 class="fade-in delay1">A <span class="highlight">Computer Engineering Student</span></h2>
+    <p class="fade-in delay2">
+        Welcome to my portfolio! Explore my works, and projects below.
+    </p>
+    <button class="btn fade-in delay3" onclick="location.href='/works'">See My Works</button>
+</section>
+
+<style>
+    /* --- Hero Section Styling --- */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 40vh;
+        text-align: center;
+        padding: 60px 30px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        font-weight: 700;
+        color: #e0e6ed;
+        text-shadow: 0 0 15px rgba(255, 253, 208, 0.3);
+    }
+
+    .hero h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        color: #c5c9d3;
+    }
+
+    .hero p {
+        max-width: 600px;
+        margin-bottom: 30px;
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #c5c9d3;
+    }
+
+    .highlight {
+        color: #FFFDD0;
+        font-weight: bold;
+    }
+
+    /* --- Button Styling (inherits from base) --- */
+    .btn {
+        background-color: #800020;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #a83240;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px #80002066;
+    }
+
+    /* --- Fade-in Animation --- */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards;
+    }
+
+    .delay1 { animation-delay: 0.2s; }
+    .delay2 { animation-delay: 0.4s; }
+    .delay3 { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* --- Responsive Design --- */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2em;
+        }
+        .hero h2 {
+            font-size: 1.3em;
+        }
+        .hero p {
+            font-size: 1em;
+        }
+    }
+</style>
 {% endblock %}
