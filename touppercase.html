@@ -1,82 +1,111 @@
 {% extends 'base.html' %}
-{% block title %}Convert to Uppercase{% endblock %}
+{% block title %}Uppercase Converter{% endblock %}
 
 {% block content %}
-    <style>
-        /* --- Form Container --- */
-        form {
-            background-color: #0a192f;
-            padding: 30px;
-            border-radius: 12px;
-            display: inline-block;
-            text-align: left;
-        }
+<section class="tool-section">
+    <h1 class="tool-title">Text Uppercase Converter</h1>
 
-        /* --- Input Field --- */
-        input[type="text"] {
-            width: 280px;
-            padding: 10px 12px;
-            margin: 8px 0;
-            border: 2px solid #1e56a0;
-            border-radius: 8px;
-            background-color: #112240;
-            color: #e0e6ed;
-            font-size: 1em;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #FFFDD0;
-            box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
-        }
-
-        /* --- Labels --- */
-        label {
-            font-weight: 500;
-        }
-
-        /* --- Button --- */
-        .btn {
-            background-color: #9c0d38;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: block;
-            margin: 15px auto 0;
-        }
-
-        .btn:hover {
-            background-color: #7a0b2e;
-            transform: translateY(-2px);
-        }
-
-        /* --- Result Text --- */
-        .result-box {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color:#FFFDD0 ;
-            font-weight: 500;
-        }
-    </style>
-
-    <h1>Convert Text to Uppercase</h1>
-
-    <form action="/touppercase" method="post">
-        <label for="inputString">Enter text:</label><br>
+    <form method="POST" action="{{ url_for('touppercase') }}" class="tool-form">
+        <label for="inputString">Enter text:</label>
         <input type="text" id="inputString" name="inputString" required>
-        <br><br>
-        <button type="submit" class="btn">Convert</button>
+        <button type="submit" class="tool-btn">Convert</button>
     </form>
 
-    {% if result %}
+    {% if uppercase_result %}
         <div class="result-box">
-            <h2>Converted Text:</h2>
-            <p>{{ result }}</p>
+            <h3>Result:</h3>
+            <p>{{ uppercase_result }}</p>
         </div>
     {% endif %}
+
+    <div class="back-container">
+        <a href="{{ url_for('works') }}" class="back-btn"> Back to My Works</a>
+    </div>
+</section>
+
+<style>
+body {
+    background-color: #0a192f;
+    color: #FFFDD0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tool-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-align: center; 
+}
+.tool-section {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.tool-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.tool-form {
+    background-color: #10233b;
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.tool-form input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tool-btn {
+    background-color: #800020;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tool-btn:hover {
+    background-color: #a32d4a;
+    box-shadow: 0 6px 20px #80002066;
+}
+
+.result-box {
+    margin-top: 30px;
+    background-color: #122b47;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 20px #FFFDD0;
+}
+
+.back-container {
+    margin-top: 50px;
+}
+
+.back-btn {
+    background-color: #800020;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #a32d4a;
+    box-shadow: 0 8px 20px #80002066;
+}
+</style>
 {% endblock %}
