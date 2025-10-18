@@ -2,51 +2,145 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-    <h1>Get in Touch</h1>
-    <p>Connect with me through my social platforms or contact number below:</p>
+<h1 class="fade-up">Get in Touch</h1>
+<p class="fade-up" style="animation-delay: 0.1s;">I'd love to connect with you! You can reach me through any of the platforms below:</p>
 
-    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
-        <a href="https://www.facebook.com/bert.palino/" target="_blank" class="contact-link">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="50">
-            <p>Facebook</p>
-        </a>
-
-        <a href="https://www.instagram.com/bertpalino/" target="_blank" class="contact-link">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="50">
-            <p>Instagram</p>
-        </a>
-
-        <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-link">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="50">
-            <p>Email</p>
+<div class="contact-container">
+    <div class="contact-card fade-up">
+        <a href="https://www.facebook.com/bert.palino/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            <h3>Facebook</h3>
+            <p>@bert.palino</p>
         </a>
     </div>
 
-    <div style="margin-top: 50px; text-align: center;">
-        <h2 style="color: #FFFDD0;"> Contact Number</h2>
-        <p style="font-size: 1.2em; margin-top: 10px;">+63 991 066 8242</p>
+    <div class="contact-card fade-up" style="animation-delay: 0.2s;">
+        <a href="https://www.instagram.com/bertpalino/" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            <h3>Instagram</h3>
+            <p>@bertpalino</p>
+        </a>
     </div>
 
-    <style>
-        .contact-link {
-            text-align: center;
-            text-decoration: none;
-            color: #e0e6ed;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+    <div class="contact-card fade-up" style="animation-delay: 0.3s;">
+        <a href="mailto:norbertopalino@gmail.com">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+            <h3>Email</h3>
+            <p>norbertopalino@gmail.com</p>
+        </a>
+    </div>
+</div>
 
-        .contact-link:hover {
-            transform: translateY(-5px);
-            color: #FFFDD0;
-        }
+<div class="contact-number fade-up" style="animation-delay: 0.4s;">
+    <h2>Contact Number</h2>
+    <p>+63 991 066 8242</p>
+</div>
 
-        .contact-link img {
-            filter: brightness(0.8);
-            transition: filter 0.3s ease;
-        }
+<style>
+/* ===== Fade-up Animation ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s forwards;
+}
 
-        .contact-link:hover img {
-            filter: brightness(1);
-        }
-    </style>
+.fade-up[style*="animation-delay"] {
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Layout ===== */
+h1 {
+    color: #FFFDD0;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    color: #e0e6ed;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.contact-card {
+    background-color: #112240;
+    border-radius: 12px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 10px #112240;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px #FFFDD0;
+}
+
+.contact-card img {
+    width: 60px;
+    margin-top: 20px;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease;
+}
+
+.contact-card:hover img {
+    filter: brightness(1.1);
+}
+
+.contact-card a {
+    text-decoration: none;
+    color: #e0e6ed;
+    display: block;
+    padding: 10px 0 20px;
+}
+
+.contact-card h3 {
+    color: #FFFDD0;
+    margin-top: 10px;
+}
+
+.contact-card p {
+    color: #c5c9d3;
+    font-size: 0.95em;
+}
+
+.contact-number {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.contact-number h2 {
+    color: #FFFDD0;
+    font-size: 1.5em;
+}
+
+.contact-number p {
+    font-size: 1.2em;
+    color: #e0e6ed;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-card {
+        width: 80%;
+    }
+}
+</style>
 {% endblock %}
