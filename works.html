@@ -1,6 +1,151 @@
 {% extends 'base.html' %}
-{% block title %}Works{% endblock %}
+{% block title %}My Works{% endblock %}
+
 {% block content %}
-    <h1>My Works</h1>
-    <p>Here you’ll find my design projects and applications</p>
+<section class="works-section">
+    <h1 class="works-title">My Works</h1>
+
+    <div class="works-container">
+        <!-- Card 1: Uppercase Converter -->
+        <div class="work-card fade-up">
+            <h2>Text Uppercase Converter</h2>
+            <p>Converts user input into uppercase letters.</p>
+            <a href="{{ url_for('touppercase') }}" class="work-btn">Try It</a>
+        </div>
+
+        <!-- Card 2: Area of a Circle -->
+        <div class="work-card fade-up" style="animation-delay: 0.2s;">
+            <h2>Area of a Circle Calculator</h2>
+            <p>Calculates the area of a circle based on the radius provided by the user.</p>
+            <a href="{{ url_for('areaOfCircle') }}" class="work-btn">Try It</a>
+        </div>
+
+        <!-- Card 3: Area of a Rectangle -->
+        <div class="work-card fade-up" style="animation-delay: 0.4s;">
+            <h2>Area of a Rectangle Calculator</h2>
+            <p>Calculates the area of a rectangle given its length and width provided by the user.</p>
+            <a href="{{ url_for('areaOfRectangle') }}" class="work-btn">Try It</a>
+        </div>
+    </div>
+
+    <div class="back-home-container fade-up" style="animation-delay: 0.6s;">
+        <a href="{{ url_for('index') }}" class="back-home-btn"> Back to Home</a>
+    </div>
+</section>
+
+<style>
+/* ===== Layout ===== */
+body {
+    background-color: #0a192f;
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.works-section {
+    text-align: center;
+    padding: 70px 20px; 
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* ===== Fade-in Animation ===== */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Works Grid ===== */
+.works-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.work-card {
+    background-color: #10233b;
+    width: 280px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px #FFFDD0;
+}
+
+.work-card h2 {
+    color: #FFFDD0;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.work-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* ===== Buttons ===== */
+.work-btn {
+    display: inline-block;
+    background-color: #800020;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.work-btn:hover {
+    background-color: #a83240;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px #80002066;
+}
+
+/* ===== Back Home Button ===== */
+.back-home-container {
+    margin-top: 50px;
+}
+
+.back-home-btn {
+    display: inline-block;
+    background: #800020;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background: #a83240;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px #80002066;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .works-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
 {% endblock %}
