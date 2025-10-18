@@ -3,6 +3,7 @@ import math
 
 app = Flask(__name__)
 
+# Main Pages
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -11,44 +12,44 @@ def index():
 def profile():
     return render_template('profile.html')
 
-@app.route ('/contact')
+@app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-@app.route ('/works')
+@app.route('/education')
+def education():
+    return render_template('education.html')
+    
+@app.route('/works')
 def works():
     return render_template('works.html')
 
+# Tool Pages
 @app.route('/touppercase', methods=['GET', 'POST'])
 def touppercase():
-    result = None
+    uppercase_result = None
     if request.method == 'POST':
-        input_string = request.form.get('inputString', '')
-        result = input_string.upper()
-    return render_template('touppercase.html', result=result)
+        text = request.form['inputString']
+        uppercase_result = text.upper()
+    return render_template('touppercase.html', uppercase_result=uppercase_result)
 
 @app.route('/areaOfCircle', methods=['GET', 'POST'])
 def areaOfCircle():
-    result = None 
+    circle_area = None
     if request.method == 'POST':
-        try:
-            radius = float(request.form.get('radius', 0))
-            result = round(math.pi * radius ** 2, 2 )
-        except ValueError:
-            result = "Invalid input! Please enter a number."
-    return render_template('areaOfCircle.html' , result=result)
+        radius = float(request.form['radius'])
+        circle_area = math.pi * (radius ** 2)
+    return render_template('areaOfCircle.html', circle_area=circle_area)
 
 @app.route('/areaOfRectangle', methods=['GET', 'POST'])
 def areaOfRectangle():
-    result = None
+    rectangle_area = None
     if request.method == 'POST':
-        try:
-            length = float(request.form.get('length', 0))
-            width = float(request.form.get('width', 0))
-            result = round(length * width, 2)
-        except ValueError:
-            result = "Invalid input! Please enter numbers."
-    return render_template('areaOfRectangle.html', result = result)
+        length = float(request.form['length'])
+        width = float(request.form['width'])
+        rectangle_area = length * width
+    return render_template('areaOfRectangle.html', rectangle_area=rectangle_area)
 
-if __name__ == "__main__":
+# Run Server
+if __name__ == '__main__':
     app.run(debug=True)
