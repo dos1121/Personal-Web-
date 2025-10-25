@@ -1,8 +1,185 @@
 {% extends 'base.html' %}
-{% block title %}Profile{% endblock %}
+{% block title %}My Profile{% endblock %}
+
 {% block content %}
-    <h1>About Me</h1>
-    <p>Hello! I’m Bert</p>
-    <p>A second year Computer Engineering student</p> 
-    <p>from the Polytechnic University of the Phllipines</p>
+<section class="profile-section fade-up">
+    <h1 class="profile-title">My Profile</h1>
+
+    <div class="profile-card">
+        <div class="profile-image-container">
+        <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile Picture" class="profile-image">
+
+        </div>
+
+        <div class="profile-details">
+            <h2 class="profile-name">Norberto P Palino Jr</h2>
+            <p class="profile-role">Computer Engineering Student</p>
+            <p class="profile-description">
+                Passionate about programming, electronics, and solving real-world problems through technology. 
+                Currently focused on learning software development, embedded systems, and data analysis.
+            </p>
+
+            <div class="profile-info">
+                <p><strong>Email:</strong> norbertopalino@gmail.com</p>
+                <p><strong>Location:</strong> Caloocan City, Philippines</p>
+                <p><strong>Interests:</strong> Programming • Hardware • Innovation</p>
+            </div>
+
+            <div class="profile-buttons">
+                <a href="{{ url_for('education') }}" class="profile-btn">My Education</a>
+                <a href="{{ url_for('works') }}" class="profile-btn">My Works</a>
+                <a href="{{ url_for('contact') }}" class="profile-btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ===== Global Theme ===== */
+body {
+    background-color: #0a192f;
+    color: #FFFDD0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Section Layout ===== */
+.profile-section {
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+/* ===== Animation ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Title ===== */
+.profile-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #FFFDD0;
+    padding: 20px 10px;
+}
+
+/* ===== Profile Card ===== */
+.profile-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #10233b;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 40px;
+}
+
+/* ===== Profile Image ===== */
+.profile-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #800020;
+    box-shadow: 0 4px 15px #80002066;
+}
+
+/* ===== Profile Info ===== */
+.profile-details {
+    flex: 2;
+    text-align: left;
+    color: #ffffff;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profile-role {
+    font-size: 1.1rem;
+    color: #FFFDD0;
+    margin-bottom: 15px;
+}
+
+
+.profile-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.profile-info p {
+    font-size: 0.95rem;
+    margin: 6px 0;
+}
+
+/* ===== Buttons ===== */
+.profile-buttons {
+    margin-top: 25px;
+}
+
+.profile-btn {
+    display: inline-block;
+    background-color: #800020;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+    background-color: #a83240;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px #80002066;
+}
+
+.profile-btn.secondary {
+    background-color: #800020;
+    border: 2px solid #800020;
+}
+
+.profile-btn.secondary:hover {
+    background-color: #800020;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-details {
+        text-align: center;
+    }
+
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+</style>
 {% endblock %}
