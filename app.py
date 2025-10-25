@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import math
+import re
 
 app = Flask(__name__)
 
-# Main Pages
+# ---------- MAIN PAGES ----------
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -19,12 +20,16 @@ def contact():
 @app.route('/education')
 def education():
     return render_template('education.html')
-    
+
+@app.route('/internships')
+def internships():
+    return render_template('internships.html')
+
 @app.route('/works')
 def works():
     return render_template('works.html')
 
-# Tool Pages
+# ---------- TOOL PAGES ----------
 @app.route('/touppercase', methods=['GET', 'POST'])
 def touppercase():
     uppercase_result = None
@@ -50,6 +55,48 @@ def areaOfRectangle():
         rectangle_area = length * width
     return render_template('areaOfRectangle.html', rectangle_area=rectangle_area)
 
-# Run Server
+def precedence (op):
+    if op == '+' or op == '-':
+        return 1 
+    if op == '*' or op == '/':
+        return 2 
+    if op == '^':
+        return 3 
+    return 0
+
+def infix_to_postfix (expression):
+    stack = []
+    output =[]
+    tokens = re.findall(r"[A-Za-z0-9]+|[()+\-*/^]", expression)
+    for token in tokens:
+        if token.isalnum():  # Operand
+            output.append(token)
+        elif token == '(':
+            stack.append(token)
+        elif token == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()
+        else:  
+            while stack and precedence(stack[-1]) >= precedence(token):
+                output.append(stack.pop())
+            stack.append(token)
+
+    while stack:
+        output.append(stack.pop())
+
+    return " ".join(output)
+
+@app.route('/infixtopostfix', methods=['GET', 'POST'])
+def infixtopostfix():
+    postfix_result = None
+    if request.method =='POST':
+        expression = request.form['inputString']
+        postfix_result = infix_to_postfix(expression)
+    return render_template('infixtopostfix.html', postfix_result=postfix_result)
+
+
+
+# ---------- RUN SERVER ----------
 if __name__ == '__main__':
     app.run(debug=True)
