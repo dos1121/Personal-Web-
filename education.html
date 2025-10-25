@@ -72,6 +72,20 @@ body {
     font-weight: 700;
     margin-bottom: 40px;
     color: #FFFDD0;
+    opacity: 0;
+    transform: translate(30px);
+    animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .back-home-container {
