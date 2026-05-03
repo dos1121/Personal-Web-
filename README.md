@@ -37,7 +37,7 @@ HTML
 
 CSS
 
-JavaScript
+Python 
 
 📌 Purpose
 
