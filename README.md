@@ -4,10 +4,12 @@ Personal Website Portfolio
 A personal portfolio website developed to showcase my profile, educational background, contact information, and programming projects. The website also features interactive tools and utilities built using programming concepts and problem-solving techniques.
 
 🚀 Features
+
 👤 Personal Information
 Displays personal profile and introduction
 Includes educational background and academic information
 Provides contact details for communication and networking
+
 🛠️ Integrated Tools and Utilities
 Area Calculator
 Calculates the area of a circle
@@ -17,12 +19,13 @@ Automatically capitalizes words and sentences entered by the user
 Infix to Postfix Converter
 Converts infix expressions into postfix notation
 Demonstrates the use of stack-based algorithms and expression parsing
+
 🧱 Technologies Used
 HTML
 CSS
 JavaScript
-📌 Purpose
 
+📌 Purpose
 The project was created to practice web development, improve user interface design skills, and demonstrate programming fundamentals through interactive web-based tools.
 
 🚀 Future Improvements
